@@ -181,5 +181,3 @@ def TBCDecrypt(text, time):
     print("W.I.P")
 
 
-while True:
-    print(TBCEncrypt("SHEMESH IS GAE", GetTime()))
