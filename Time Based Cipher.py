@@ -180,4 +180,6 @@ def TBCEncrypt(text, time):
 def TBCDecrypt(text, time):
     print("W.I.P")
 
+print("oh thats not the lyrics") # גדל עלי
+
 
