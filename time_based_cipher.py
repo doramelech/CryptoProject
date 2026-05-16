@@ -314,8 +314,9 @@ def TBCDecrypt(text, time_value):
     text = _myszkowski_decrypt(text, time_value["second"])
     text = _two_square_decrypt(text, month_word, day_word)
     text = _affine_decrypt(text, time_value["minute"], time_value["hour"])
-    text = _restore_spaces(text, spaces)
-    return text
+    return text, spaces
+
+
 
 def TBCHack(text):
     print("W.I.P")
