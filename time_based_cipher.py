@@ -323,7 +323,8 @@ def TBCHack(text):
 
 def TBC(text, time_value, mode):
     if mode == "encrypt":
-        return TBCEncrypt(text, time_value)
+        encrypted = TBCEncrypt(text, time_value)
+        return _restore_spaces(encrypted["ciphertext"], encrypted["spaces"] )
     elif mode == "decrypt":
         return TBCDecrypt(text, time_value)
     else:
