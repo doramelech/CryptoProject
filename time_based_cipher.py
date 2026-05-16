@@ -313,8 +313,8 @@ def TBCDecrypt(text, time_value):
 
     elif isinstance(text, str):
         try:
-            payload = json.loads(text) # streamlit might be converting the dictionary to a str which causes an error - so this turns it into a dict back
-        except exception as e:
+            payload = json.loads(text)
+        except (json.JSONDecodeError, TypeError):
             payload = None
 
         if isinstance(payload, dict):
