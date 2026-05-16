@@ -353,5 +353,3 @@ def TBC(text, time_value, mode):
         return TBCEncrypt(text, time_value)
     elif mode == "decrypt":
         return TBCDecrypt(text, time_value)
-    else:
-        return TBCHack(text)
