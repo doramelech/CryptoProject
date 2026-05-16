@@ -144,6 +144,9 @@ def cipher_page():
         result = general_cipher(text, cipher, mode)
         st.session_state.last_result = result
 
+    if cipher == "TBC" and st.button("Hack"):
+        st.session_state.last_result = hack_tbc(text, hack_window)
+
     if "last_result" in st.session_state:
         st.subheader("Result")
         st.write(st.session_state.last_result)
