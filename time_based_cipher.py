@@ -346,8 +346,6 @@ def TBCDecrypt(text, time_value):
 
 
 
-def TBCHack(text):
-    print("W.I.P")
 
 
 def TBC(text, time_value, mode):
