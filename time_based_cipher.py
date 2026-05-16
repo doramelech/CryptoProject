@@ -317,6 +317,9 @@ def TBCDecrypt(text, time_value):
     text = _restore_spaces(text, spaces)
     return text
 
+def TBCHack(text):
+    print("W.I.P")
+
 
 def TBC(text, time_value, mode):
     if mode == "encrypt":
