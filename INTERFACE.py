@@ -152,3 +152,13 @@ def cipher_page():
         st.session_state.last_result = result
 
 
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+if "username" not in st.session_state:
+    st.session_state.username = ""
+
+if st.session_state.authenticated:
+    cipher_page()
+else:
+    auth_page()
