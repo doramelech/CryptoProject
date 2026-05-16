@@ -324,7 +324,7 @@ def TBCDecrypt(text, time_value):
     text = _myszkowski_decrypt(text, time_value["second"])
     text = _two_square_decrypt(text, month_word, day_word)
     text = _affine_decrypt(text, time_value["minute"], time_value["hour"])
-    return text, spaces
+    return {"ciphertext": text, "spaces": spaces}
 
 
 
