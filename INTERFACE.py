@@ -5,7 +5,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from time_based_cipher import GetTime,  TBC
+from time_based_cipher import GetTime, TBC
 from yonch_cipher import YonchCipher
 
 
@@ -114,21 +114,10 @@ def general_cipher(text, cipher, mode, time_value=None):
         if cipher == "TBC":
             if time_value is None:
                 time_value = GetTime()
-            if mode == "encrypt":
-                return TBC(text, time_value, mode)
-            if mode == "decrypt":
-                return TBC(text, time_value, mode )
-            elif mode == "hack":
-                return TBC(text, time_value, mode)
-
+            return TBC(text, time_value, mode)
 
         if cipher == "Yonch":
-            if mode == "encrypt":
-                return YonchCipher(text, mode)
-            if mode == "decrypt":
-                return YonchCipher(text, mode)
-            if mode == "hack":
-                return YonchCipher(text, mode)
+            return YonchCipher(text, mode)
 
         return "Unknown cipher."
     except Exception as e:
@@ -144,13 +133,16 @@ def cipher_page():
         st.rerun()
 
     cipher = st.selectbox("Cipher", ["TBC", "Yonch"])
-    mode = st.radio("Mode", ["encrypt", "decrypt"], horizontal=True)
+    mode = st.radio("Mode", ["encrypt", "decrypt", "hack"], horizontal=True)
 
     text = st.text_area("Text", height=180)
     if st.button("Run"):
         result = general_cipher(text, cipher, mode)
         st.session_state.last_result = result
 
+    if "last_result" in st.session_state:
+        st.subheader("Result")
+        st.write(st.session_state.last_result)
 
 
 if "authenticated" not in st.session_state:

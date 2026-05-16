@@ -326,37 +326,23 @@ def _myszkowski_decrypt(text, key):
 def TBCEncrypt(text, time_value):
     month_word = _word_from_number(time_value["month"])
     day_word = _word_from_number(time_value["day"])
-    text, spaces = _extract_spaces(text)
+    text, special_chars = _extract_special_chars(text)
 
     text = _affine_encrypt(text, time_value["minute"], time_value["hour"])
     text = _two_square_encrypt(text, month_word, day_word)
     text = _myszkowski_encrypt(text, time_value["second"])
-    return {"ciphertext": text, "spaces": spaces}
+    return _restore_special_chars(text, special_chars)
 
 
 def TBCDecrypt(text, time_value):
     month_word = _word_from_number(time_value["month"])
     day_word = _word_from_number(time_value["day"])
-    spaces = []
-
-    if isinstance(text, dict):
-        spaces = text.get("spaces", [])
-        text = text.get("ciphertext", "")
-
-    elif isinstance(text, str):
-        try:
-            payload = json.loads(text)
-        except (json.JSONDecodeError, TypeError):
-            payload = None
-
-        if isinstance(payload, dict):
-            spaces = payload.get("spaces", [])
-            text = payload.get("ciphertext", "")
+    text, special_chars = _extract_special_chars(text)
 
     text = _myszkowski_decrypt(text, time_value["second"])
     text = _two_square_decrypt(text, month_word, day_word)
     text = _affine_decrypt(text, time_value["minute"], time_value["hour"])
-    return {"ciphertext": text, "spaces": spaces}
+    return _restore_special_chars(text, special_chars)
 
 
 
@@ -366,11 +352,8 @@ def TBCHack(text):
 
 def TBC(text, time_value, mode):
     if mode == "encrypt":
-        encrypted = TBCEncrypt(text, time_value)
-        return _restore_spaces(encrypted["ciphertext"], encrypted["spaces"] )
+        return TBCEncrypt(text, time_value)
     elif mode == "decrypt":
-        decrypted = TBCDecrypt(text, time_value)
-        return _restore_spaces(decrypted["ciphertext"], decrypted["spaces"] )
+        return TBCDecrypt(text, time_value)
     else:
         return TBCHack(text)
-
