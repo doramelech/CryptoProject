@@ -318,9 +318,11 @@ def TBCDecrypt(text, time_value):
     return text
 
 
-text = "bioren the norn and is the king of MEDIA TOK"
-print(text)
-text = TBCEncrypt(text, GetTime())
-print(_restore_spaces(text["ciphertext"], text["spaces"]))
-text = TBCDecrypt(text, GetTime())
-print(text)
+def TBC(text, time_value, mode):
+    if mode == "encrypt":
+        return TBCEncrypt(text, time_value)
+    elif mode == "decrypt":
+        return TBCDecrypt(text, time_value)
+    else:
+        return TBCHack(text)
+
