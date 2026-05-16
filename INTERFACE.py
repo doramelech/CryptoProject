@@ -114,8 +114,23 @@ def general_cipher(text, cipher, mode, time_value=None):
         if cipher == "TBC":
             if time_value is None:
                 time_value = GetTime()
-            return TBC(text, time_value, mode)
-        return YonchCipher(text, mode)
+            if mode == "encrypt":
+                return TBC(text, time_value, mode)
+            if mode == "decrypt":
+                return TBC(text, time_value, mode )
+            elif mode == "hack":
+                return TBC(text, time_value, mode)
+
+
+        if cipher == "Yonch":
+            if mode == "encrypt":
+                return YonchCipher(text, mode)
+            if mode == "decrypt":
+                return YonchCipher(text, mode)
+            if mode == "hack":
+                return YonchCipher(text, mode)
+
+        return "Unknown cipher."
     except Exception as e:
         return str(e)
 
