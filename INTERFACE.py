@@ -117,7 +117,19 @@ def general_cipher(text, cipher, mode, time_value=None):
             return TBC(text, time_value, mode)
         return YonchCipher(text, mode)
     except Exception as e:
-        return e
+        return str(e)
+
+
+def cipher_page():
+    st.title("Crypto Project")
+    st.caption(f"Signed in as {st.session_state.username}")
+
+    if st.button("Log out"):
+        logout()
+        st.rerun()
+
+    cipher = st.selectbox("Cipher", ["TBC", "Yonch"])
+    mode = st.radio("Mode", ["encrypt", "decrypt"], horizontal=True)
 
 
 
