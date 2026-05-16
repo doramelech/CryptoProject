@@ -115,6 +115,38 @@ def _restore_spaces(text, space_positions):
     return "".join(result)
 
 
+def _extract_special_chars(text):
+    special_chars = []
+    letters = []
+
+    for index, ch in enumerate(text):
+        if ch.isalpha():
+            letters.append(ch)
+        else:
+            special_chars.append((index, ch))
+
+    return "".join(letters), special_chars
+
+
+def _restore_special_chars(text, special_chars):
+    if not special_chars:
+        return text
+
+    result = []
+    text_index = 0
+    total_length = len(text) + len(special_chars)
+    special_map = {index: ch for index, ch in special_chars}
+
+    for index in range(total_length):
+        if index in special_map:
+            result.append(special_map[index])
+        else:
+            result.append(text[text_index])
+            text_index += 1
+
+    return "".join(result)
+
+
 def _affine_encrypt(text, a, b):
     a = a % 26
     if a == 0:
