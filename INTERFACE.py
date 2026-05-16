@@ -133,7 +133,11 @@ def cipher_page():
         st.rerun()
 
     cipher = st.selectbox("Cipher", ["TBC", "Yonch"])
-    mode = st.radio("Mode", ["encrypt", "decrypt", "hack"], horizontal=True)
+    mode = st.radio("Mode", ["encrypt", "decrypt"], horizontal=True)
+    hack_window = st.selectbox(
+        "Hack range",
+        ["Last hour", "Last day", "Last week", "Last month", "Whole year"],
+    )
 
     text = st.text_area("Text", height=180)
     if st.button("Run"):
