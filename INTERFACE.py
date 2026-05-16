@@ -4,7 +4,8 @@ import hmac
 from pathlib import Path
 
 import streamlit as st
-from time_based_cipher import TBC, GetTime
+
+from time_based_cipher import GetTime,  TBC
 from yonch_cipher import YonchCipher
 
 def general_cipher(text, cipher, mode, time_value=None ):
