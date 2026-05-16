@@ -350,6 +350,6 @@ def TBCDecrypt(text, time_value):
 
 def TBC(text, time_value, mode):
     if mode == "encrypt":
-        return TBCEncrypt(text, time_value)
+        return TBCEncrypt(text, time_value) # comment
     elif mode == "decrypt":
         return TBCDecrypt(text, time_value)
