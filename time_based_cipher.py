@@ -305,11 +305,8 @@ def TBCEncrypt(text, time_value):
 def TBCDecrypt(text, time_value):
     month_word = _word_from_number(time_value["month"])
     day_word = _word_from_number(time_value["day"])
-    spaces = []
-
-    if isinstance(text, dict):
-        spaces = text.get("spaces", [])
-        text = text.get("ciphertext", "")
+    spaces = text.get("spaces", [])
+    text = text.get("ciphertext", "")
 
     text = _myszkowski_decrypt(text, time_value["second"])
     text = _two_square_decrypt(text, month_word, day_word)
