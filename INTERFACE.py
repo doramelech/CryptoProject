@@ -146,5 +146,9 @@ def cipher_page():
     cipher = st.selectbox("Cipher", ["TBC", "Yonch"])
     mode = st.radio("Mode", ["encrypt", "decrypt"], horizontal=True)
 
+    text = st.text_area("Text", height=180)
+    if st.button("Run"):
+        result = general_cipher(text, cipher, mode)
+        st.session_state.last_result = result
 
 
