@@ -305,8 +305,21 @@ def TBCEncrypt(text, time_value):
 def TBCDecrypt(text, time_value):
     month_word = _word_from_number(time_value["month"])
     day_word = _word_from_number(time_value["day"])
-    spaces = text.get("spaces", [])
-    text = text.get("ciphertext", "")
+    spaces = []
+
+    if isinstance(text, dict):
+        spaces = text.get("spaces", [])
+        text = text.get("ciphertext", "")
+
+    elif isinstance(text, str):
+        try:
+            payload = json.loads(text) # streamlit might be converting the dictionary to a str which causes an error - so this turns it into a dict back
+        except exception as e:
+            payload = None
+
+        if isinstance(payload, dict):
+            spaces = payload.get("spaces", [])
+            text = payload.get("ciphertext", "")
 
     text = _myszkowski_decrypt(text, time_value["second"])
     text = _two_square_decrypt(text, month_word, day_word)
