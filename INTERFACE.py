@@ -5,7 +5,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from time_based_cipher import GetTime, TBC
+from time_based_cipher import GetTime, TBC, TBCDecrypt, is_english, is_english_dictionary
 from yonch_cipher import YonchCipher
 
 
