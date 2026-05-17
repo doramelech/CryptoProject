@@ -146,6 +146,10 @@ def cipher_page():
     )
 
     text = st.text_area("Text", height=180)
+
+    if cipher == "TBC" and st.button("How does this cipher work?"):
+        go_to_view("tbc_explainer")
+
     if st.button("Run"):
         result = general_cipher(text, cipher, mode)
         st.session_state.last_result = result
