@@ -6,6 +6,7 @@ from pathlib import Path
 import streamlit as st
 from streamlit_extras.floating_button import *
 from streamlit_extras.redirect import *
+from ciphers.TBC_steps_example import TBCExample
 from ciphers.tbc_hack import hack_tbc
 from ciphers.time_based_cipher import GetTime, TBC, TBCDecrypt, is_english, is_english_dictionary
 from ciphers.yonch_cipher import YonchCipher
