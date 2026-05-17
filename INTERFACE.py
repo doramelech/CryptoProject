@@ -158,6 +158,16 @@ def cipher_page():
         st.write(st.session_state.last_result)
 
 
+def tbc_explainer_page():
+    st.title("TBC Example")
+    st.caption(f"Signed in as {st.session_state.username}")
+
+    if st.button("Back to ciphers"):
+        go_to_view("cipher")
+
+    TBCExample()
+
+
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 if "username" not in st.session_state:
