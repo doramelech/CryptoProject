@@ -8,7 +8,7 @@ import streamlit as st
 from streamlit_extras.floating_button import *
 from streamlit_extras.redirect import *
 
-if floating_button("My Github Repository 🛠"):
+if floating_button("My Github Repository 🛠", key="github"):
     redirect("https://github.com/doramelech/CryptoProject")
 
 
