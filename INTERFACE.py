@@ -166,6 +166,9 @@ if "view" not in st.session_state:
     st.session_state.view = "cipher"
 
 if st.session_state.authenticated:
-    cipher_page()
+    if st.session_state.view == "tbc_explainer":
+        tbc_explainer_page()
+    else:
+        cipher_page()
 else:
     auth_page()
