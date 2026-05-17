@@ -159,6 +159,7 @@ def cipher_page():
         go_to_view("tbc_explainer")
     if cipher == "Yonch" and st.button("How does this cipher work?"):
         go_to_view("yonch_explainer")
+        print()
 
     if st.button("Run"):
         result = general_cipher(text, cipher, mode)
