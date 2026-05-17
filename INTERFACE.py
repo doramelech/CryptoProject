@@ -162,6 +162,8 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 if "username" not in st.session_state:
     st.session_state.username = ""
+if "view" not in st.session_state:
+    st.session_state.view = "cipher"
 
 if st.session_state.authenticated:
     cipher_page()
