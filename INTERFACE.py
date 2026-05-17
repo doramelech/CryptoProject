@@ -78,6 +78,12 @@ def verify_user(username, password):
 def logout():
     st.session_state.authenticated = False
     st.session_state.username = ""
+    st.session_state.view = "cipher"
+
+
+def go_to_view(view_name):
+    st.session_state.view = view_name
+    st.rerun()
 
 
 def auth_page():
