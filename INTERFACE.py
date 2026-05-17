@@ -230,7 +230,7 @@ def cipher_page():
     st.title("Crypto Project")
     st.caption(f"Signed in as {st.session_state.username}")
 
-    if st.button("Log out"):
+    if floating_button("Log out", key="logout"):
         logout()
         st.rerun()
 
