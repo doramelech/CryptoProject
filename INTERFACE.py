@@ -10,6 +10,7 @@ from ciphers.TBC_steps_example import TBCExample
 from ciphers.tbc_hack import hack_tbc
 from ciphers.time_based_cipher import GetTime, TBC, TBCDecrypt, is_english, is_english_dictionary
 from ciphers.yonch_cipher import YonchCipher
+from ciphers.Yonch_steps_example import YonchExample
 
 if floating_button("My Github Repository 🛠", key="github"):
     redirect("https://github.com/doramelech/CryptoProject")
@@ -156,6 +157,8 @@ def cipher_page():
 
     if cipher == "TBC" and st.button("How does this cipher work?"):
         go_to_view("tbc_explainer")
+    if cipher == "Yonch" and st.button("How does this cipher work?"):
+        go_to_view("yonch_explainer")
 
     if st.button("Run"):
         result = general_cipher(text, cipher, mode)
@@ -178,6 +181,15 @@ def tbc_explainer_page():
 
     TBCExample()
 
+def yonch_explainer_page():
+    st.title("Yonch Example")
+    st.caption(f"Signed in as {st.session_state.username}")
+
+    if st.button("Back to ciphers"):
+        go_to_view("cipher")
+
+    YonchExample()
+
 
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
@@ -189,6 +201,8 @@ if "view" not in st.session_state:
 if st.session_state.authenticated:
     if st.session_state.view == "tbc_explainer":
         tbc_explainer_page()
+    elif st.session_state.view == "yonch_explainer":
+        yonch_explainer_page()
     else:
         cipher_page()
 else:
