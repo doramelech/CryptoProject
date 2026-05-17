@@ -5,6 +5,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import streamlit_extras as ste
 import streamlit as st
+from streamlit_extras.floating_button import *
+from streamlit_extras.redirect import *
+
+if floating_button("My Github Repository 🛠"):
+    redirect("https://github.com/doramelech/CryptoProject")
+
 
 from time_based_cipher import GetTime, TBC, TBCDecrypt, is_english, is_english_dictionary
 from yonch_cipher import YonchCipher
