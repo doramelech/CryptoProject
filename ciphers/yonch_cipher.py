@@ -63,12 +63,12 @@ def YonchDecrypt(text, word_list=words):
 def YonchHack(text):
     return "W.I.P"
 
-def YonchCipher(text,  mode):
+
+def YonchCipher(text, mode):
     if mode == "encrypt":
         return YonchEncrypt(text)
     elif mode == "decrypt":
         return YonchDecrypt(text)
     else:
         return YonchHack(text)
-
 

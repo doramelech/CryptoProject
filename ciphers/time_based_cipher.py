@@ -82,39 +82,6 @@ def _word_from_number(number):
     return WORDS[(number - 1) % len(WORDS)]
 
 
-def _extract_spaces(text):
-    spaces = []
-    letters = []
-
-    for index, ch in enumerate(text):
-        if ch == " ":
-            spaces.append(index)
-        elif ch.isalpha():
-            letters.append(ch)
-
-    return "".join(letters), spaces
-
-
-def _restore_spaces(text, space_positions):
-    if not space_positions:
-        return text
-
-    result = []
-    text_index = 0
-    total_length = len(text) + len(space_positions)
-    space_set = set(space_positions)
-
-    for index in range(total_length):
-        if index in space_set:
-            result.append(" ")
-        else:
-            if text_index < len(text):
-                result.append(text[text_index])
-                text_index += 1
-
-    return "".join(result)
-
-
 def _extract_special_chars(text):
     special_chars = []
     letters = []
@@ -163,6 +130,7 @@ def _affine_encrypt(text, a, b):
             result.append(chr(((a * x) + b) % 26 + ord("A")))
     return "".join(result)
 
+
 def _normalize_affine_a(a):
     a = a % 26
     if a == 0:
@@ -192,7 +160,6 @@ def _affine_decrypt(text, a, b):
             y = ord(ch) - ord("A")
             result.append(chr((a_inv * (y - b)) % 26 + ord("A")))
     return "".join(result)
-
 
 
 def _build_square(keyword):
@@ -239,6 +206,7 @@ def _two_square_encrypt(text, left_key, right_key):
 
     return "".join(result)
 
+
 def _two_square_decrypt(text, left_key, right_key):
     left = _build_square(left_key)
     right = _build_square(right_key)
@@ -267,7 +235,6 @@ def _two_square_decrypt(text, left_key, right_key):
     return "".join(result).rstrip("X")
 
 
-
 def _myszkowski_encrypt(text, key):
     key = str(key).zfill(2)
     width = len(key)
@@ -288,6 +255,7 @@ def _myszkowski_encrypt(text, key):
                     result.append(row[col])
 
     return "".join(result)
+
 
 def _myszkowski_decrypt(text, key):
     key = str(key).zfill(2)
@@ -322,7 +290,6 @@ def _myszkowski_decrypt(text, key):
     return "".join("".join(row) for row in grid).rstrip("X")
 
 
-
 def TBCEncrypt(text, time_value):
     month_word = _word_from_number(time_value["month"])
     day_word = _word_from_number(time_value["day"])
@@ -345,11 +312,10 @@ def TBCDecrypt(text, time_value):
     return _restore_special_chars(text, special_chars)
 
 
-
-
-
 def TBC(text, time_value, mode):
     if mode == "encrypt":
-        return TBCEncrypt(text, time_value) 
+        return TBCEncrypt(text, time_value)
     elif mode == "decrypt":
         return TBCDecrypt(text, time_value)
+    return "Unknown mode."
+

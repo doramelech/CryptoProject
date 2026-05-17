@@ -1,0 +1,14 @@
+{
+  "doramelech": {
+    "salt": "3f55ef1d8a9062a5",
+    "password_hash": "ebbd617c0341ed02c48c45e7078558c9b8b2fbf3e069c75b524bae3188326d9b"
+  },
+  "omrimelech": {
+    "salt": "3a0f27e09c1f825c",
+    "password_hash": "abc5809aab5512d7b3cd4bee94b487654fc433ddbe3eca33afa7665978ee38d5"
+  },
+  "d": {
+    "salt": "18ac3e7343f01689",
+    "password_hash": "80af4b9627bd93a700381c2cc5b61c4f3177e5b95c4abeaae2b2616412c64b25"
+  }
+}
