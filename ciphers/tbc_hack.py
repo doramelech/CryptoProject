@@ -31,7 +31,7 @@ def hack_tbc(ciphertext, window_label):
     attempts = 0
 
     start_dt = _range_start_for_window(window_label)
-    end_dt = datetime.now()
+    end_dt = _range_end_for_window(window_label)
     total_attempts = max(1, int((end_dt - start_dt).total_seconds()) + 1)
     progress_bar = progress_slot.progress(0, text="Searching for the best match...")
 
