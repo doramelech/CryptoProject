@@ -16,7 +16,7 @@ def _range_start_for_window(window_label):
     if window_label == "Last month":
         return now - timedelta(days=30)
     if window_label == "Whole year":
-        return now - timedelta(days=365)
+        return datetime(now.year, 1, 1, 0, 0, 0)
     return now - timedelta(hours=1)
 
 
