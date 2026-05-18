@@ -20,6 +20,13 @@ def _range_start_for_window(window_label):
     return now - timedelta(hours=1)
 
 
+def _range_end_for_window(window_label):
+    now = datetime.now()
+    if window_label == "Whole year":
+        return datetime(now.year, 12, 31, 23, 59, 59)
+    return now
+
+
 def hack_tbc(ciphertext, window_label):
     best_text_slot = st.empty()
     status_slot = st.empty()
