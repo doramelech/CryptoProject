@@ -177,9 +177,7 @@ def cipher_page():
     if "last_result" in st.session_state:
         st.subheader("Result")
         st.write(st.session_state.last_result)
-        if st.button("Copy to Input"):
-            st.session_state.cipher_input_text = str(st.session_state.last_result)
-            st.rerun()
+        st.button("Copy to Input", on_click=copy_result_to_input)
 
 
 def tbc_explainer_page():
