@@ -152,7 +152,10 @@ def cipher_page():
         ["Last hour", "Last day", "Last week", "Last month", "Whole year"],
     )
 
-    text = st.text_area("Text", height=180)
+    if "cipher_input_text" not in st.session_state:
+        st.session_state.cipher_input_text = ""
+
+    text = st.text_area("Text", height=180, key="cipher_input_text")
 
     if cipher == "TBC" and st.button("How does this cipher work?"):
         go_to_view("tbc_explainer")
