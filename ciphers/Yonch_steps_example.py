@@ -38,7 +38,6 @@ def _coord_to_str(word_index, char_index):
 
 
 def YonchExample():
-    st.title("Yonch Cipher Example")
     st.caption("Using the word list: cologne, player, climate for demonstration")
 
     s = steps(
