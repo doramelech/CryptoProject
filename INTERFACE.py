@@ -87,6 +87,10 @@ def go_to_view(view_name):
     st.rerun()
 
 
+def copy_result_to_input():
+    st.session_state.cipher_input_text = str(st.session_state.get("last_result", ""))
+
+
 def auth_page():
     st.title("Crypto Project")
     st.subheader("Login or Register")
