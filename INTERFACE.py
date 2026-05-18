@@ -91,6 +91,19 @@ def copy_result_to_input():
     st.session_state.cipher_input_text = str(st.session_state.get("last_result", ""))
 
 
+def get_tbc_time_value():
+    key_mode = st.session_state.get("tbc_key_mode", "Current time")
+    if key_mode == "Custom time":
+        return {
+            "month": int(st.session_state.get("tbc_month", 1)),
+            "day": int(st.session_state.get("tbc_day", 1)),
+            "hour": int(st.session_state.get("tbc_hour", 0)),
+            "minute": int(st.session_state.get("tbc_minute", 0)),
+            "second": int(st.session_state.get("tbc_second", 0)),
+        }
+    return GetTime()
+
+
 def auth_page():
     st.title("Crypto Project")
     st.subheader("Login or Register")
