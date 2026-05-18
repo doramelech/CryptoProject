@@ -122,6 +122,8 @@ def auth_page():
                 else:
                     st.error(message)
 
+def swap(str1, str2):
+    return str2, str1
 
 def general_cipher(text, cipher, mode, time_value=None):
     try:
