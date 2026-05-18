@@ -156,6 +156,35 @@ def cipher_page():
         ["Last hour", "Last day", "Last week", "Last month", "Whole year"],
     )
 
+    if "tbc_key_mode" not in st.session_state:
+        st.session_state.tbc_key_mode = "Current time"
+    if "tbc_month" not in st.session_state:
+        st.session_state.tbc_month = 1
+    if "tbc_day" not in st.session_state:
+        st.session_state.tbc_day = 1
+    if "tbc_hour" not in st.session_state:
+        st.session_state.tbc_hour = 0
+    if "tbc_minute" not in st.session_state:
+        st.session_state.tbc_minute = 0
+    if "tbc_second" not in st.session_state:
+        st.session_state.tbc_second = 0
+
+    tbc_time_value = None
+    if cipher == "TBC":
+        st.session_state.tbc_key_mode = st.radio(
+            "TBC key",
+            ["Current time", "Custom time"],
+            key="tbc_key_mode_radio",
+        )
+        if st.session_state.tbc_key_mode == "Custom time":
+            tbc_time_value = {
+                "month": st.number_input("Month", min_value=1, max_value=12, value=st.session_state.tbc_month, step=1, key="tbc_month"),
+                "day": st.number_input("Day", min_value=1, max_value=31, value=st.session_state.tbc_day, step=1, key="tbc_day"),
+                "hour": st.number_input("Hour", min_value=0, max_value=23, value=st.session_state.tbc_hour, step=1, key="tbc_hour"),
+                "minute": st.number_input("Minute", min_value=0, max_value=59, value=st.session_state.tbc_minute, step=1, key="tbc_minute"),
+                "second": st.number_input("Second", min_value=0, max_value=59, value=st.session_state.tbc_second, step=1, key="tbc_second"),
+            }
+
     if "cipher_input_text" not in st.session_state:
         st.session_state.cipher_input_text = ""
 
