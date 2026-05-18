@@ -10,5 +10,9 @@
   "d": {
     "salt": "18ac3e7343f01689",
     "password_hash": "80af4b9627bd93a700381c2cc5b61c4f3177e5b95c4abeaae2b2616412c64b25"
+  },
+  "gaya": {
+    "salt": "50c97eab760d64e1",
+    "password_hash": "b85aa01ae6c86938fbc2c3a6a4e7bfb090f2f23c97065800250368e696b60a98"
   }
 }

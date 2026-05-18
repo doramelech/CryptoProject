@@ -16,7 +16,6 @@ if floating_button("My Github Repository 🛠", key="github"):
     redirect("https://github.com/doramelech/CryptoProject")
 
 
-
 USERS_FILE = Path("users.json")
 
 
