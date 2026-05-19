@@ -14,5 +14,13 @@
   "gaya": {
     "salt": "50c97eab760d64e1",
     "password_hash": "b85aa01ae6c86938fbc2c3a6a4e7bfb090f2f23c97065800250368e696b60a98"
+  },
+  "daniel": {
+    "salt": "bd3dae5fb91f88a4",
+    "password_hash": "c74f7ef1ac777aa0bb1757481bd5ab8126994f682f78d7d34fd93833cde706ab"
+  },
+  "testuser": {
+    "salt": "ae5deb822e0d7199",
+    "password_hash": "896fa938b18b7150b141009e5f18c74002c9556f701d01fa1734d917bc194089"
   }
 }

@@ -105,4 +105,3 @@ def hack_tbc(ciphertext, window_label):
             f"{best_time['hour']:02d}:{best_time['minute']:02d}:{best_time['second']:02d}"
         )
     return best_text
-

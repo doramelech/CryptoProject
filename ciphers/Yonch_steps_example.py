@@ -84,6 +84,7 @@ def YonchExample():
         st.write("Recovered text:")
         st.code(recovered, language="text")
         st.write("Of course all the words are selected randomly, and if the letter isnt in the randomly selected word it randomly chooses another word. ")
+        st.write("notice that because the dictionary is unknown, and the words are picked randomly, the cipher is almost impossible to crack, especially for me..")
 
         if st.button("Reset", key="yonch_reset"):
             s.reset()

@@ -202,7 +202,6 @@ def cipher_page():
         st.session_state.cipher_input_text = ""
 
     text = st.text_area("Text", height=180, key="cipher_input_text")
-
     if cipher == "TBC" and st.button("How does this cipher work?"):
         go_to_view("tbc_explainer")
     if cipher == "Yonch" and st.button("How does this cipher work?"):
@@ -210,7 +209,7 @@ def cipher_page():
         print()
 
     if st.button("Run"):
-        result = general_cipher(text, cipher, mode)
+        result = general_cipher(text, cipher, mode, tbc_time_value)
         st.session_state.last_result = result
 
     if cipher == "TBC" and st.button("Hack"):
